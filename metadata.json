@@ -20,7 +20,7 @@
         }
     },
     "fontSwatch": {
-       "title": "Poppins &",
+       "title": "Poppins",
         "font1": {
             "font-family": "\"Poppins\", Helvetica, sans-serif",
             "font-size": "36px",
@@ -172,8 +172,7 @@
             "font__navigation--line-height": "24px",
             "font__navigation--letter-spacing": "0px",
             "color__navigation--text": "#737373",
-            "color__navigation--text--selected": "#737373",
-            "color__navigation--icon": "#565f5c"
+            "color__navigation--text--selected": "#737373"
         },
         "slideshow": {
             "color__slideshow-caption--background": "rgba(0,0,0, 0.5)",
