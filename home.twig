@@ -1,0 +1,103 @@
+{% extends "layout.twig" %}
+{% block content %}
+
+<div class="home-page  container">
+
+
+
+    <!-- Main Content -->
+    <div role="main">
+
+
+        <div class="home-gallery">
+
+
+            {{widget('content', 'gallery-title', {
+                content: '<h1>Summer 16</h1>'
+            })|raw}}
+
+
+            {{widget('gallery', 'imagegallery', {
+                'showTitle': true,
+                'showDescription': true,
+                'images':[
+                    {
+                        'url':'https://hd.unsplash.com/photo-1468245856972-a0333f3f8293',
+                        'title':'First image title',
+                        'description': 'First image description'
+                    },
+                    {
+                        'url':'https://hd.unsplash.com/photo-1471421298428-1513ab720a8e',
+                        'title':'Second image title',
+                        'description': 'Second image description'
+                    },
+                    {
+                        'url':'https://hd.unsplash.com/photo-1451337516015-6b6e9a44a8a3',
+                        'title':'Third image title',
+                        'description': 'Third image description'
+                    }
+                ]
+            })|raw}}
+
+        </div>
+
+
+        <!-- Main Zone -->
+        {{zone('main')|raw}}
+
+    </div>
+
+
+
+
+</div>
+
+{% endblock %}
+
+
+{% block scripts %}
+
+
+    <script src="{{ asset('scripts/slick.min.js')}}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.home-gallery .gallery-list').slick({
+                appendArrows: $('.home-gallery'),
+                dots: false,
+                //infinite: true,
+                lazyLoad: 'progressive',
+                speed: 1000,
+                centerMode: false,
+                slideToShow: 1,
+                slidesToScroll: 1,
+                useTransform: true,
+                variableWidth: true,
+            });
+        });
+    </script>
+
+    <script>
+        bk$(function () {
+
+            bk$('[rel="lightbox"]').each(
+                function () {
+                    bk$(this).replaceWith('<span class="' + this.className + '">' + this.innerHTML + '</span>');
+                }
+            );
+
+            bk$('[data-lightbox]').each(
+                function () {
+                    bk$(this).removeAttr('data-lightbox').css('cursor', 'default');
+                    bk$(this).removeAttr('data-lightbox').css('cursor', 'default').on('click',
+                        function (evt) {
+                            evt.preventDefault();
+                        }
+                    );
+                }
+            );
+        });
+    </script>
+
+
+{% endblock %}

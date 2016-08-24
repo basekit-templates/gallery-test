@@ -1,0 +1,261 @@
+
+// -----------------------------
+// Table of Contents
+// -----------------------------
+
+//  LESS Includes
+//    - BK LESS Framework
+//    - Base Styles
+//    - Widgets
+//    - Plugins
+//    - Pages
+
+
+//  Theme Styles
+//    - Header
+//    - Main / Responsive Columns
+//    - Footer
+
+
+
+
+// -----------------------------
+//  LESS Includes
+// -----------------------------
+
+
+
+// BK LESS Framework
+// ------------------
+
+@import "@{templateCommon}/bk-less-framework-v8.less";                      // V8 Framework
+@import "@{templateLocal}/stylesheets/slick.less";
+@import "@{templateLocal}/stylesheets/navigation.less";
+
+
+
+// Fonts
+// ------------------
+
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,500,600);
+
+@desktop-1250px: ~"only screen and (max-width: 1250px)";
+@tablet-860px: ~"only screen and (max-width: 860px)";
+
+
+
+
+// -----------------------------
+//  Template Styles
+// -----------------------------
+
+
+
+// Homepage Styling
+// ------------------
+
+
+.home-page {
+    overflow: hidden;
+}
+
+
+
+// Header
+// ------------------
+
+
+.template-header {
+    background-color: @color__body--background;
+    .flex-display;
+    .align-items(center);
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+
+    [data-widget-type="logo"] {
+        .align-self(flex-start);
+    }
+
+
+    [data-widget-type="companyname"] {
+        .flex(1 0 20%);
+    }
+
+
+    [data-widget-type="extendednavigation"] {
+        .flex(1 0 80%);
+    }
+}
+
+
+
+// Homepage Gallery
+// ------------------
+
+
+.home-gallery {
+    height: ~"calc(100vh)";
+    .flex-display;
+    .flex-wrap(wrap);
+    .align-items(center);
+
+
+    // Gradient fade out for gallery
+    // &:after {
+    //     content: "";
+    //     display: inline-block;
+    //     position: absolute;
+    //     top: 0;
+    //     bottom: 0;
+    //     width: 250px;
+    //     z-index: 999;
+    //     background: -moz-linear-gradient(right,  @color__body--background 0%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    //     background: -webkit-linear-gradient(right,  @color__body--background 0%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    //     background: linear-gradient(to left,  @color__body--background 0%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color__body--background', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 */
+    //     right: 0;
+    // }
+
+
+    // Page title / content widget for gallery
+    [data-widget-type="content"] {
+        .align-self(flex-end);
+
+
+        // Title styling
+        h1 {
+            font-size: 38px;
+            font-weight: 500;
+            letter-spacing: -1px;
+            padding-bottom: 35px;
+            padding-left: 40px;
+        }
+
+
+        // Remove spacing from content widget text
+        h1,
+        h2,
+        h3,
+        p {
+            margin-bottom: 0;
+        }
+
+
+        // Change position of gallery depending on if content widget is present
+        &+ [data-widget-type="gallery"] {
+            .align-self(flex-start);
+        }
+    }
+
+
+    // Home page gallery widget
+    .gallery {
+
+
+        &__gallery-list {
+            //padding: 0 0 0 40px;
+        }
+
+
+        // Adds grayscale effect to gallery items by default
+        &__gallery-item {
+            -webkit-filter: grayscale(90%);
+            filter: grayscale(90%);
+            opacity: 0.25;
+            margin: 0 20px;
+            transition: all 0.5s ease;
+
+
+            // Shows selected slide in colour
+            &.slick-current {
+                 -webkit-filter: grayscale(0);
+                filter: grayscale(0);
+                opacity: 1;
+            }
+        }
+
+
+        // Hides gallery background image
+        &__image-link {
+            background-image: none!important;
+        }
+
+
+        // Makes sure image is in proportion to its container
+        &__image {
+            height: auto;
+            max-height: 550px;
+            max-width: 100vw;
+        }
+
+
+        // Gallery caption
+        &__caption {
+            background-color: #808986;
+            display: inline-block;
+            margin: 0;
+            padding: 5px 20px;
+        }
+
+
+        // Gallery image title and description
+        &__image-title,
+        &__image-description {
+            display: inline-block;
+        }
+
+
+        // Gallery image title
+        &__image-title {
+            color: @color__gallery-title--text;
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+
+        // Gallery image description
+        &__image-description {
+            color: fade(@color__gallery-description--text, 75%);
+            font-size: 15px;
+            font-style: italic;
+        }
+    }
+}
+
+
+
+// Main Zone
+// ------------------
+
+[role="main"] {
+    //padding-left: 20%;
+    margin: 0 auto;
+    max-width: 1000px;
+
+    @media @desktop-1250px {
+        //padding-left: 10%;
+    }
+}
+
+
+
+// Footer
+// ------------------
+
+.template-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+
+
+    [data-widget-type="content"] {
+        padding: 30px 40px;
+    }
+}
